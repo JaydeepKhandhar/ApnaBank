@@ -1,4 +1,4 @@
-﻿@model ApnaBank.Models.AccountDetails
+﻿@model ApnaBank.Models.AccountInfo
 
 @{
     ViewData["Title"] = "Transfer Amount";
@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="AccountInfo" method="post">
+        <form asp-action="TransferAmount" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 @if (TempData["ResultNotFound"] != null)
@@ -19,12 +19,12 @@
                 }
             </div>
             <div class="form-group">
-                <label asp-for="AccountNumber" class="control-label"></label>
+                <label asp-for="AccountNumber" class="control-label">Account Number</label>
                 <input asp-for="AccountNumber" class="form-control" />
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
+                <label asp-for="UserName" class="control-label">User Name</label>
                 <input asp-for="UserName" class="form-control" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
@@ -32,6 +32,11 @@
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetAccountNumber" class="control-label">Target Account Number</label>
+                <input asp-for="TargetAccountNumber" class="form-control" />
+                <span asp-validation-for="TargetAccountNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Amount" class="control-label"></label>

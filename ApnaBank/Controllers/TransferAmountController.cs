@@ -21,13 +21,13 @@ namespace ApnaBank.Controllers
         public IActionResult TransferAmount(AccountInfo accountInfo)
         {
             var account = _apnaBankDbContext.AccountDetails.Where(a => a.AccountNumber == accountInfo.AccountNumber && a.UserName == accountInfo.UserName && a.Password == accountInfo.Password).FirstOrDefault();
-            TempData["TransferredAmount"] = "Transferred amount!..";
+            TempData["TransferredAmount"] = accountInfo.Amount.ToString();
             if (account != null)
             {
                 account.Amount -= accountInfo.Amount;
                 _apnaBankDbContext.AccountDetails.Update(account);
                 _apnaBankDbContext.SaveChanges();
-                TempData["SourceAccountBalance"] = account.Amount;
+                TempData["SourceAccountBalance"] = account.Amount.ToString();
 
                 var targetAccount = _apnaBankDbContext.AccountDetails.Where(a => a.AccountNumber == accountInfo.TargetAccountNumber).FirstOrDefault();
                 if (targetAccount != null)
@@ -35,11 +35,16 @@ namespace ApnaBank.Controllers
                     targetAccount.Amount += accountInfo.Amount;
                     _apnaBankDbContext.AccountDetails.Update(targetAccount);
                     _apnaBankDbContext.SaveChanges();
-                    TempData["TargetAccountBalance"] = targetAccount.Amount;
+                    TempData["TargetAccountBalance"] = targetAccount.Amount.ToString();
                     return RedirectToAction("AccountInfo");
                 }
             }
             TempData["ResultNotFound"] = "Please Enter Correct details!....";
+            return View();
+        }
+
+        public IActionResult AccountInfo()
+        {
             return View();
         }
     }
