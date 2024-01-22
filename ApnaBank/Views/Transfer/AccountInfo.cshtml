@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Account Information";
+}
+
+<h1>Account Balance</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            @if (TempData["SourceAccountBalance"] != null)
+            {
+                <p class="alert-info">
+                    Source Account Balance is: &nbsp;@TempData["SourceAccountBalance"]
+                </p>
+            }
+            @if (TempData["TransferredAmount"] != null)
+            {
+                <p class="alert-info">
+                    Source Account Balance is: &nbsp;@TempData["TransferredAmount"]
+                </p>
+            }
+            @if (@TempData["TargetAccountBalance"] != null)
+            {
+                <p class="alert-info">
+                    Target Account Balance is: &nbsp;@TempData["TargetAccountBalance"]
+                </p>
+            }
+        </div>
+    </div>
+</div>

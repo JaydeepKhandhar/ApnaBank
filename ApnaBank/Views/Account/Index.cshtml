@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AccountDetails>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["ResultOK"] != null)
+{
+    <h2>@TempData["ResultOK"]</h2>
+}
+
+<div class="container shadow p-5">
+    <h1 class="text-center mb-3">Account List</h1>
+    <div class="col mb-3">
+        <a asp-controller="Account" asp-action="CreateAccount" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Account</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ACCOUNT NUMBER</th>
+                <th scope="col">USER NAME</th>
+                <th scope="col">PASSWORD</th>
+                <th scope="col">AMOUNT</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col">PHONE</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td width="20%">
+                        @item.AccountNumber
+                    </td>
+                    <td width="20%">
+                        @item.UserName
+                    </td>
+                    <td width="20%">
+                        @item.Password
+                    </td>
+                    <td width="20%">
+                        @item.Amount
+                    </td>
+                    <td width="20%">
+                        @item.Address
+                    </td>
+                    <td width="20%">
+                        @item.PhoneNumber
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

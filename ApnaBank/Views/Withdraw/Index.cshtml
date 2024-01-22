@@ -1,0 +1,48 @@
+﻿@model ApnaBank.Models.AccountDetails
+
+@{
+    ViewData["Title"] = "Withdraw Balance";
+}
+
+<h1>Withdraw Balance from Account</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Withdraw" asp-action="AccountInfo" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                @if (TempData["ResultNotFound"] != null)
+                {
+                    <p class="alert-danger">
+                        @TempData["ResultNotFound"]
+                    </p>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountNumber" class="control-label"></label>
+                <input asp-for="AccountNumber" class="form-control" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" type="number" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div role="group" class="form-group w-60 btn-group">
+                @* <a asp-controller="Account" asp-action="AccountBalance" class="btn btn-sm btn-primary">Submit</a>&nbsp; *@
+                <button type="submit" class="btn btn-sm btn-primary">Submit</button>&nbsp;
+                <button type="reset" class="btn btn-sm btn-primary">Clear</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model ApnaBank.Models.AccountDetails
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["ResultOK"] != null)
+{
+    <h2>@TempData["ResultOK"]</h2>
+}
+
+<div class="container shadow p-5">
+    <h1 class="text-center mb-3">Welcome @Model.UserName</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col">USER NAME:</th>
+                <th scope="col">AMOUNT:</th>
+                <th scope="col">ADDRESS:</th>
+                <th scope="col">PHONE:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="20%">
+                    @Model.UserName
+                </td>
+                <td width="20%">
+                    @Model.Amount
+                </td>
+                <td width="20%">
+                    @Model.Address
+                </td>
+                <td width="20%">
+                    @Model.PhoneNumber
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
